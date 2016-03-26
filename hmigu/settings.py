@@ -150,7 +150,8 @@ INSTALLED_APPS = (
     'djangocms_inherit',
     'djangocms_link',
     'reversion',
-    'hmigu'
+    'hmigu',
+    'regulations'
 )
 
 LANGUAGES = (
