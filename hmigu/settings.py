@@ -195,17 +195,12 @@ CMS_PERMISSION = True
 
 CMS_PLACEHOLDER_CONF = {}
 
+import dj_database_url
+db_from_env = dj_database_url.config()
 DATABASES = {
-    'default': {
-        'CONN_MAX_AGE': 0,
-        'ENGINE': 'django.db.backends.sqlite3',
-        'HOST': 'localhost',
-        'NAME': 'project.db',
-        'PASSWORD': '',
-        'PORT': '',
-        'USER': ''
-    }
+    'default': {}
 }
+DATABASES['default'].update(db_from_env)
 
 MIGRATION_MODULES = {
     'cmsplugin_filer_image': 'cmsplugin_filer_image.migrations_django',
@@ -221,3 +216,8 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
 )
+
+try:
+    from .local import *
+except ImportError:
+    pass
