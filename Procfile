@@ -1,1 +1,1 @@
-web: gunicorn -w 1 hmigu:wsgi:application 
+web: gunicorn -w 1 hmigu.wsgi:application 
